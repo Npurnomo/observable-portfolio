@@ -6,15 +6,29 @@ export default {
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
   // lets you organize them into sections and have unlisted pages.
-  // pages: [
-  //   {
-  //     name: "Examples",
-  //     pages: [
-  //       {name: "Dashboard", path: "/example-dashboard"},
-  //       {name: "Report", path: "/example-report"}
-  //     ]
-  //   }
-  // ],
+  pages: [
+    {
+      name: "Articles",
+      pages: [
+        {name: "About Up Banking", path: "/01-Up-article"},
+        {name: "Simile, Here, and Everywhere", path: "/02-Simile-article"},
+        {name: "Data Reduction", path: "/04-Data-Reduction-article"},
+      ]
+    },
+    {
+      name: "Projects",
+      pages: [
+        {name: "Industry Financials", path: "/03-Finance-dashb"}
+      ]
+    },
+    {
+      name: "Examples",
+      pages: [
+        {name: "Dashboard", path: "/example-dashboard"},
+        {name: "Report", path: "/example-report"}
+      ]
+    }
+  ],
 
   // Some additional configuration options and their defaults:
   // theme: "default", // try "light", "dark", "slate", etc.
