@@ -91,6 +91,7 @@ const pickMargin2 = view(Inputs.select(
       (d) => !["Industry Name", "Number of Firms", "Number of firms_y", "Number of firms_x"].includes(d)
     ),
     {
+      value: "Buybacks in $ millions",
       label: "Select second metric"
     }
   )

@@ -18,7 +18,8 @@ export default {
     {
       name: "Projects",
       pages: [
-        {name: "Industry Financials", path: "/03-Finance-dashb"}
+        {name: "Industry Financials", path: "/03-Finance-dashb"},
+        {name: "Remember Covid?", path: "/05-covid"},
       ]
     },
     {
