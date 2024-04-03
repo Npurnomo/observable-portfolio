@@ -20,6 +20,8 @@ export default {
       pages: [
         {name: "Industry Financials", path: "/03-Finance-dashb"},
         {name: "Remember Covid?", path: "/05-covid"},
+        {name: "Earthquakes and Extreme Values", path: "/06-Earthquake_PoT"},
+
       ]
     },
     {

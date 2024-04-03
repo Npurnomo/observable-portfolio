@@ -1,6 +1,13 @@
+---
+title: 05 Covid Time Series
+toc: false
+
+---
 # Remember COVID-19 ?
 
 Showing Covid Time Series for **${country}**
+
+I graduated my undergrad in 2020, and the COVID-19 pandemic was a significant part of my final semester. I still remember the fear and uncertainty that gripped the world as the virus spread rapidly across countries. The pandemic changed the way we live, work, and interact with each other. We all learned how to adapt to a new normal, wearing masks, social distancing, and working from home. Venturing about the job market mid 2020 was difficult, but I was lucky to have found a role through my personal data projects then.
 
 This page gives a brief look at how COVID-19 affected different countries. It shows how Datasette and the Observable framework can work together. Our interactive dashboard displays the number of COVID-19 deaths in a country over time. Using simple queries, we show real-time data from 2020 to 2022, giving a historical view of the pandemic.
 
