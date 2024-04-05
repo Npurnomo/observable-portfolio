@@ -5,7 +5,7 @@ title: 06 Earthquakes and Extreme Values
 
 # Earthquakes and Extreme Values
 
-Recently, Taiwan experienced a massive earthquake that sent shockwaves through the region, leaving devastation in its wake. The tremors struck with alarming intensity, shaking buildings, disrupting infrastructure, and instilling fear among residents. Such seismic events serve as stark reminders of the unpredictable forces of nature and the vulnerability of human civilization in the face of natural disasters.
+Recently, Taiwan experienced a massive earthquake that sent shockwaves through the region, leaving devastation in its wake (03/04/2024). The tremors struck with alarming intensity, shaking buildings, disrupting infrastructure, and instilling fear among residents. Such seismic events serve as stark reminders of the unpredictable forces of nature and the vulnerability of human civilization in the face of natural disasters.
 
 In the aftermath of this earthquake, questions arise about the frequency of such severe events. While earthquakes are not uncommon in Taiwan due to its location within the notorious "Ring of Fire," where tectonic plates meet and seismic activity is heightened, the occurrence of a major quake of this magnitude raises concerns about the region's preparedness and resilience.
 
