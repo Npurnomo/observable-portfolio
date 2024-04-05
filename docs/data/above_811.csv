@@ -1,0 +1,18 @@
+,title,magnitude,date_time,cdi,mmi,alert,tsunami,sig,net,nst,dmin,gap,magType,depth,latitude,longitude,location,continent,country
+94,"M 8.2 - 91 km ESE of Perryville, Alaska",8.2,29-07-2021 06:15,8,6,green,1,1237,us,0,0.875,66.0,mww,46.66,55.4742,-157.917,"Perryville, Alaska",,
+95,"M 8.2 - 99 km SE of Perryville, Alaska",8.2,29-07-2021 06:15,8,7,yellow,1,1252,ak,0,0.0,0.0,mww,35.0,55.3154,-157.829,"Perryville, Alaska",,
+205,"M 8.2 - 267 km E of Levuka, Fiji",8.2,19-08-2018 00:19,5,4,green,1,1050,us,0,3.63,13.0,mww,600.0,-18.1125,-178.153,"Levuka, Fiji",,Fiji
+233,"M 8.2 - near the coast of Chiapas, Mexico",8.2,08-09-2017 04:49,9,7,red,1,2910,us,0,0.944,22.0,mww,47.39,15.0222,-93.8993,"Chiapas, Mexico",,
+320,"M 8.3 - 48 km W of Illapel, Chile",8.3,16-09-2015 22:54,9,8,orange,1,1960,us,0,0.684,19.0,mww,22.44,-31.5729,-71.6744,"Illapel, Chile",,Chile
+391,"M 8.2 - 93 km NW of Iquique, Chile",8.2,01-04-2014 23:46,9,8,yellow,1,1332,us,0,0.609,23.0,mww,25.0,-19.6097,-70.7691,"Iquique, Chile",,
+428,M 8.3 - Sea of Okhotsk,8.3,24-05-2013 05:44,5,5,green,1,1115,us,385,0.0,10.0,mww,598.1,54.892,153.221,Okhotsk,,
+475,M 8.2 - off the west coast of northern Sumatra,8.2,11-04-2012 10:43,9,6,green,0,1213,us,341,0.0,14.9,mwc,25.1,0.802,92.463,off the west coast of northern Sumatra,,
+476,M 8.6 - off the west coast of northern Sumatra,8.6,11-04-2012 08:38,9,7,yellow,0,2048,official,499,0.0,16.6,mw,20.0,2.327,93.063,off the west coast of northern Sumatra,,
+511,"M 9.1 - 2011 Great Tohoku Earthquake, Japan",9.1,11-03-2011 05:46,9,8,,0,2184,official,541,0.0,9.5,mww,29.0,38.297,142.373,"2011 Great Tohoku Earthquake, Japan",,
+552,"M 8.8 - 36 km WNW of Quirihue, Chile",8.8,27-02-2010 06:34,8,8,,0,1991,official,454,0.0,17.8,mww,22.9,-36.122,-72.898,"Quirihue, Chile",South America,Chile
+628,"M 8.4 - 122 km SW of Bengkulu, Indonesia",8.4,12-09-2007 11:10,0,6,,0,1086,official,411,0.0,32.3,mww,34.0,-4.438,101.367,"Bengkulu, Indonesia",,Indonesia
+649,M 8.3 - Kuril Islands,8.3,15-11-2006 11:14,4,7,,0,1064,us,576,0.0,20.9,mwc,10.0,46.592,153.266,Kuril Islands,,
+692,"M 8.6 - 78 km WSW of Singkil, Indonesia",8.6,28-03-2005 16:09,0,8,,0,1138,official,510,0.0,22.1,mww,30.0,2.085,97.108,"Singkil, Indonesia",,Indonesia
+703,M 9.1 - 2004 Sumatra - Andaman Islands Earthquake,9.1,26-12-2004 00:58,0,8,,0,1274,official,601,0.0,22.0,mw,30.0,3.295,95.982,2004 Sumatra - Andaman Islands Earthquake,,Indonesia
+747,"M 8.2 - 134 km SSW of Kushiro, Japan",8.16,25-09-2003 19:50,0,9,,0,1024,official,0,0.0,0.0,mww,27.0,41.815,143.91,"Kushiro, Japan",,
+802,"M 8.4 - 6 km SSW of Atico, Peru",8.4,23-06-2001 20:33,0,8,,0,1086,official,518,0.0,0.0,mww,33.0,-16.265,-73.641,"Atico, Peru",,Peru
