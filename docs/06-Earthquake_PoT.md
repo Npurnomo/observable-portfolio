@@ -150,7 +150,7 @@ fit_gpd = gpdFit(earthquake$magnitude, u = u, type = 'pwm', information = c("obs
 gpdRiskMeasures(fit_gpd,c(0.95,0.99,0.999))
 ```
 
-## Interpreting Expected Shortfall:
+## Interpreting Expected Shortfall
 Interpreting the expected shortfall for various probabilities, such as 95%, 99%, and 99.9%, provides critical information for risk management. Expected shortfall represents the average magnitude of seismic events beyond a certain threshold, offering insight into the potential severity of damages. For instance, the estimated values suggest that seismic events exceeding a magnitude of 7.77 occur with a 5% probability. At the 95th percentile (quantile), seismic events surpassing this threshold (with a magnitude of 7.77) are expected to result in magnitudes averaging over 8.11. This insight underscores the imperative of implementing robust infrastructure and emergency response measures to mitigate the impact of such events on communities and economies.
 
 p          | quantile     | shortfall

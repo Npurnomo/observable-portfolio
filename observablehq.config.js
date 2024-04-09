@@ -21,7 +21,8 @@ export default {
         {name: "Industry Financials", path: "/03-Finance-dashb"},
         {name: "Remember Covid?", path: "/05-covid"},
         {name: "Earthquakes and Extreme Values", path: "/06-Earthquake_PoT"},
-
+        {name: "SQL Away!", path: "/07-Customer-dashb"},
+        {name: "Heathrow Forecast", path: "/08-Heathrow-forecast"},
       ]
     },
     {
