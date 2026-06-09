@@ -12,10 +12,30 @@ I graduated my undergrad in 2020, and the COVID-19 pandemic was a significant pa
 This page gives a brief look at how COVID-19 affected different countries through the lens of **excess deaths** — the difference between observed deaths and what would have been expected without the pandemic. Data is sourced from [The Economist's global excess deaths model](https://github.com/TheEconomist/covid-19-the-economist-global-excess-deaths-model).
 
 ```js
+const allData = await FileAttachment("data/covid-excess-deaths.csv").csv({ typed: true });
+const countries = [...new Set(allData.map(d => d.location))].sort();
+```
+
+```js
 const country = view(Inputs.select(countries, {
   value: "Albania",
   label: "Country"
 }));
+```
+
+```js
+const country_data = allData
+  .filter(d => d.location === country)
+  .map(d => ({
+    ...d,
+    date: new Date(d.date),
+    estimate: +d.estimate,
+    estimate_top_95: +d.estimate_top_95,
+    estimate_top_50: +d.estimate_top_50,
+    estimate_bot_50: +d.estimate_bot_50,
+    estimate_bot_95: +d.estimate_bot_95,
+    official_covid_deaths: d.official_covid_deaths === "NA" ? null : +d.official_covid_deaths
+  }));
 ```
 
 ```js
@@ -27,23 +47,20 @@ Plot.plot({
   x: { label: "Date" },
   width,
   marginLeft: 60,
-  color: { legend: true },
   marks: [
     Plot.areaY(country_data, {
       x: "date",
       y1: "estimate_bot_95",
       y2: "estimate_top_95",
       fill: "#89AB6C",
-      fillOpacity: 0.15,
-      title: "95% confidence interval"
+      fillOpacity: 0.15
     }),
     Plot.areaY(country_data, {
       x: "date",
       y1: "estimate_bot_50",
       y2: "estimate_top_50",
       fill: "#89AB6C",
-      fillOpacity: 0.25,
-      title: "50% confidence interval"
+      fillOpacity: 0.25
     }),
     Plot.lineY(country_data, {
       x: "date",
@@ -65,25 +82,6 @@ Inputs.table(country_data, {
     official_covid_deaths: "Official COVID deaths"
   }
 })
-```
-
-```js
-const allData = await FileAttachment("data/covid-excess-deaths.csv").csv({ typed: true });
-
-const countries = [...new Set(allData.map(d => d.location))].sort();
-
-const country_data = allData
-  .filter(d => d.location === country)
-  .map(d => ({
-    ...d,
-    date: new Date(d.date),
-    estimate: +d.estimate,
-    estimate_top_95: +d.estimate_top_95,
-    estimate_top_50: +d.estimate_top_50,
-    estimate_bot_50: +d.estimate_bot_50,
-    estimate_bot_95: +d.estimate_bot_95,
-    official_covid_deaths: d.official_covid_deaths === "NA" ? null : +d.official_covid_deaths
-  }));
 ```
 
 Data: The Economist, [covid-19-the-economist-global-excess-deaths-model](https://github.com/TheEconomist/covid-19-the-economist-global-excess-deaths-model)
