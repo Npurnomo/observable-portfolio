@@ -41,7 +41,7 @@ toc: false
 <div class="hero">
   <h1>Nico Purnomo</h1>
   <h2>Product manager. Data, ML, and the occasional rabbit hole.</h2>
-  <p>I build data and AI products professionally, and share the analytical side here — interactive projects, articles, and ideas I find interesting.</p>
+  <p>I build data, ML, and AI products professionally, and share the analytical side here — interactive projects, articles, and ideas I find interesting.</p>
   <a href="https://terminal-website-npurnomo.vercel.app/" class="terminal-link">↗ terminal-website-npurnomo.vercel.app</a>
 </div>
 
@@ -51,6 +51,7 @@ toc: false
       title: "NVIDIA (NVDA) Stock Price",
       subtitle: "Weekly close, 2020–2024. The AI era in one chart.",
       width,
+      height: 320,
       y: {grid: true, label: "Price (USD)"},
       x: {label: "Date"},
       marks: [
@@ -84,10 +85,9 @@ toc: false
 
 ```js
 import * as topojson from "npm:topojson-client";
-
-const nvda = FileAttachment("nvda.csv").csv({typed: true});
-const earthquake = FileAttachment("data/earthquake_1995-2023.csv").csv({typed: true});
-const land50m = FileAttachment("data/land-50m.json").json();
+const nvda = await FileAttachment("nvda.csv").csv({typed: true});
+const earthquake = await FileAttachment("data/earthquake_1995-2023.csv").csv({typed: true});
+const land50m = await FileAttachment("data/land-50m.json").json();
 const land = topojson.feature(land50m, land50m.objects.land);
 ```
 

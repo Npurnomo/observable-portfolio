@@ -1,93 +1,89 @@
 ---
 title: 05 Covid Time Series
 toc: false
-
 ---
-# Remember COVID-19 ?
 
-Showing Covid Time Series for **${country}**
+# Remember COVID-19?
 
-I graduated my undergrad in 2020, and the COVID-19 pandemic was a significant part of my final semester. I still remember the fear and uncertainty that gripped the world as the virus spread rapidly across countries. The pandemic changed the way we live, work, and interact with each other. We all learned how to adapt to a new normal, wearing masks, social distancing, and working from home. Venturing about the job market mid 2020 was difficult, but I was lucky to have found a role through my personal data projects then.
+Showing excess death estimates for **${country}**
 
-This page gives a brief look at how COVID-19 affected different countries. It shows how Datasette and the Observable framework can work together. Our interactive dashboard displays the number of COVID-19 deaths in a country over time. Using simple queries, we show real-time data from 2020 to 2022, giving a historical view of the pandemic.
+I graduated my undergrad in 2020, and the COVID-19 pandemic was a significant part of my final semester. I still remember the fear and uncertainty that gripped the world as the virus spread rapidly across countries. The pandemic changed the way we live, work, and interact with each other. Venturing about the job market mid 2020 was difficult, but I was lucky to have found a role through my personal data projects then.
 
-This interactive display helps understand how COVID-19 changed over time. You can explore and analyze the data to see how the pandemic affected different places.
+This page gives a brief look at how COVID-19 affected different countries through the lens of **excess deaths** — the difference between observed deaths and what would have been expected without the pandemic. Data is sourced from [The Economist's global excess deaths model](https://github.com/TheEconomist/covid-19-the-economist-global-excess-deaths-model).
 
-
-```js echo
+```js
 const country = view(Inputs.select(countries, {
   value: "Albania",
-  label: "Country : "
+  label: "Country"
 }));
 ```
 
-```js echo
+```js
 Plot.plot({
   y: {
     grid: true,
-    label: `Time Series of Covid Deaths : ${country}`
+    label: "Estimated daily excess deaths"
   },
-  width: width,
-  marginLeft: 60,
-  marks: [
-    Plot.line(data_with_dates, {
-      x: "end_date",
-      y: "total_deaths",
-      title: "Covid Numbers",
-      tip: true
-    })
-  ],
   x: { label: "Date" },
-  y: { label: "Number of Deaths" }
+  width,
+  marginLeft: 60,
+  color: { legend: true },
+  marks: [
+    Plot.areaY(country_data, {
+      x: "date",
+      y1: "estimate_bot_95",
+      y2: "estimate_top_95",
+      fill: "#89AB6C",
+      fillOpacity: 0.15,
+      title: "95% confidence interval"
+    }),
+    Plot.areaY(country_data, {
+      x: "date",
+      y1: "estimate_bot_50",
+      y2: "estimate_top_50",
+      fill: "#89AB6C",
+      fillOpacity: 0.25,
+      title: "50% confidence interval"
+    }),
+    Plot.lineY(country_data, {
+      x: "date",
+      y: "estimate",
+      stroke: "#89AB6C",
+      tip: true
+    }),
+    Plot.ruleY([0], { stroke: "var(--theme-foreground-faintest)" })
+  ]
 })
 ```
 
-## Fetch data 
-
-```js echo
-const country_sql = `select end_date as date, expected_deaths from economist_excess_deaths where country = "${country}" `
-
-```
-
-```js echo
-country_sql 
-
-```
-
-```js echo
-const data = d3.json(
-  `https://covid-19.datasettes.com/covid/economist_excess_deaths.json?country__exact=${country}&_sort_desc=end_date&_shape=array`
-);
-```
-
-
-
-```js echo
-const data_with_dates = data.map(function(d) {
-  d.end_date = d3.timeParse("%Y-%m-%d")(d.end_date);
-  return d;
+```js
+Inputs.table(country_data, {
+  columns: ["date", "estimate", "official_covid_deaths"],
+  header: {
+    date: "Date",
+    estimate: "Est. daily excess deaths",
+    official_covid_deaths: "Official COVID deaths"
+  }
 })
 ```
 
+```js
+const allData = await FileAttachment("data/covid-excess-deaths.csv").csv({ typed: true });
 
+const countries = [...new Set(allData.map(d => d.location))].sort();
 
-```js echo
-Inputs.table(data_with_dates)
-```
-## Fetch list of countries
-
-```js echo
-const countriess_sql = "select country from economist_excess_deaths group by country"
-```
-```js echo
-const countries = fetch(
-  `https://covid-19.datasettes.com/covid.json?sql=${encodeURIComponent(
-    countriess_sql
-  )}&_size=max&_shape=arrayfirst`
-).then((r) => r.json());
-```
-```js echo
-countries
+const country_data = allData
+  .filter(d => d.location === country)
+  .map(d => ({
+    ...d,
+    date: new Date(d.date),
+    estimate: +d.estimate,
+    estimate_top_95: +d.estimate_top_95,
+    estimate_top_50: +d.estimate_top_50,
+    estimate_bot_50: +d.estimate_bot_50,
+    estimate_bot_95: +d.estimate_bot_95,
+    official_covid_deaths: d.official_covid_deaths === "NA" ? null : +d.official_covid_deaths
+  }));
 ```
 
-Data: https://covid-19.datasettes.com/covid
+Data: The Economist, [covid-19-the-economist-global-excess-deaths-model](https://github.com/TheEconomist/covid-19-the-economist-global-excess-deaths-model)
