@@ -72,7 +72,7 @@ Now, let’s go off on a tangent and explore why the above calculation involves 
 
 Going back to our example, we can make sense of this in a way that for each feature / dimension, we are trying to find out how much of a person’s height and weight is part of the other person’s. Then we sum them up.
 
-An even furhter tangent is how this is also actually covariance and correlation. Here’s a great definition by Oliver Knill (2011),
+An even further tangent is how this is also actually covariance and correlation. Here’s a great definition by Oliver Knill (2011),
 
 <em>"If X, Y are two random variables of zero mean, then the covariance Cov[XY ] = E[ X · Y ] is the dot product of X and Y . The standard deviation of X is the length of X. The correlation is the cosine of the angle between the two vectors. Positive correlation means an acute angle, negative correlation means an obtuse angle. Uncorrelated means orthogonal."</em>
 

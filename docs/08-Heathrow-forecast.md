@@ -1,5 +1,5 @@
 ---
-title: Customer Dashboard 
+title: Heathrow Forecast
 toc: true
 ---
 # Forecasting Heathrow Airport Passenger Traffic
@@ -62,7 +62,7 @@ Plot.plot({
   y: {grid: true},
   color: {legend: true, scheme: "Accent"},
   marks: [
-    Plot.areaY(long, {x: "Month", y: "Number of Passangers", fill: "Region", tip: true}),
+    Plot.areaY(long, {x: "Month", y: "Number of Passengers", fill: "Region", tip: true}),
     Plot.ruleY([0])
   ]
 })
@@ -70,7 +70,7 @@ Plot.plot({
 
 ## Forecasting Passenger Traffic
 
-We will be forecasting TOTAL passanger traffic (so all the regions combined). To forecast passenger traffic at Heathrow Airport, we will use the fable ARIMA model in R. The fable package is a collection of commonly used forecasting models that are easy to use and interpret. The ARIMA model is a popular choice for time series forecasting due to its ability to capture trends and seasonality in the data. By fitting an ARIMA model to the historical passenger traffic data, we can generate forecasts for future passenger traffic at Heathrow Airport.
+We will be forecasting TOTAL passenger traffic (so all the regions combined). To forecast passenger traffic at Heathrow Airport, we will use the fable ARIMA model in R. The fable package is a collection of commonly used forecasting models that are easy to use and interpret. The ARIMA model is a popular choice for time series forecasting due to its ability to capture trends and seasonality in the data. By fitting an ARIMA model to the historical passenger traffic data, we can generate forecasts for future passenger traffic at Heathrow Airport.
 
 
 ### Zooming in 2 years of data to check seasonality

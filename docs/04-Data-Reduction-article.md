@@ -18,7 +18,7 @@ theme: "light"
 ***Originally written and posted on my Medium in 10/2023***
 
 ## Introduction
-In such a digitalised world, we are blessed with technological advancements that enable us to effortlessly capture and immortalise our most cherished memories. The mere notion of not being able to snap a quick picturdate or record any thought in an audio clip is unthinkable. I rely very much on such tools to be able to share and take note of ideas. Though, I do try to refrain from them to be in the "moment" at times.
+In such a digitalised world, we are blessed with technological advancements that enable us to effortlessly capture and immortalise our most cherished memories. The mere notion of not being able to snap a quick picture or record any thought in an audio clip is unthinkable. I rely very much on such tools to be able to share and take note of ideas. Though, I do try to refrain from them to be in the "moment" at times.
 
 I was tinkering around with my old camera when I encountered a term I was more familiar with some time ago when I was more into photography. It was the dynamic range option. There's this little box in the main options to choose between different levels of dynamic ranges. I played around, but could not really the difference; With curiosity piqued, to Google I ventured.
 
