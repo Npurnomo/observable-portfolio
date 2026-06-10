@@ -49,7 +49,7 @@ toc: false
   <div class="card">${
     resize((width) => Plot.plot({
       title: "NVIDIA (NVDA) Stock Price",
-      subtitle: "Weekly close, 2020–2024. The AI era in one chart.",
+      subtitle: "Monthly close, split-adjusted, 2020–2024. The AI era in one chart.",
       width,
       height: 320,
       y: {grid: true, label: "Price (USD)"},

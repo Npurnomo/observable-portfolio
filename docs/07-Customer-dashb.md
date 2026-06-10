@@ -20,7 +20,7 @@ view(Inputs.table(db.query("SELECT * FROM customer_orders.csv")))
 
 
 ```js echo
-const db = DuckDBClient.of({gaia: FileAttachment("data/customer_orders.csv")});
+const db = DuckDBClient.of({"customer_orders.csv": FileAttachment("data/customer_orders.csv")});
 ```
 SQL cheat sheet:
 - SELECT: extracts data from a database

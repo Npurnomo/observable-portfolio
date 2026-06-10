@@ -128,7 +128,7 @@ Plot.plot({
 Plot.plot({
   title: "Histogram of earthquake significance",
   marks: [
-    Plot.rectY(earthquake, Plot.binX({ y: "count" }, { x: "sig", fill: "#088F8F	" })),
+    Plot.rectY(earthquake, Plot.binX({ y: "count" }, { x: "sig", fill: "#088F8F" })),
     Plot.ruleY([0])
   ]
 })

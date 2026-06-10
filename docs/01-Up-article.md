@@ -46,7 +46,7 @@ Up is a product of collaboration by a technology company, Ferocia, and a non-big
 Up has been making money by participating in Bendigo's home lending. In other words, Up has been lending out depositors' money for interest. This Neobank does not have to create new products to create revenue streams. It is using its partner, the traditional bank as a tool. It is not at all ideal as this means that even Up is not yet independent. It still relies on other institutions to operate. I do not see this as something truly terrible as many companies and organisations collaborate and help each other to drive profits.
 
 The most integral part for banks are customers and retention, and this is something that Up has been doing well. From customers and retention, banks have deposits and from that point, they have their freedom on how to manage the cash. Deposits usually sit in banks for a long period of time especially when a bank is a person's main bank.
-To attract customers, Up has been doing quite a few things right. On top of that, it has a referral program that runs throughout February 2021. A new customer along with his/her friend who referred him/her to Up will receive up to $15 and this is really a really good deal to utilise as new adopters can try it out and even transfer the bonus back to their main bank account if Up is not it.
+To attract customers, Up has been doing quite a few things right.
 According to a survey done by Bain, Consumers prefer and trust technology companies more than traditional banks. This is an opportunity that has to be taken by a company like Up to maximise growth.
 
 ---
