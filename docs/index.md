@@ -4,7 +4,7 @@ toc: false
 
 <style>
 .hero {
-  margin: 4rem 0 3rem;
+  margin: 4rem 0 2.5rem;
   font-family: var(--sans-serif);
 }
 .hero h1 {
@@ -33,74 +33,79 @@ toc: false
   color: var(--theme-foreground-muted);
   text-decoration: none;
 }
-.hero .terminal-link:hover {
+.hero .terminal-link:hover { color: var(--theme-foreground-focus); }
+
+/* Featured card */
+.featured {
+  border: 1px solid #dab56a;
+  border-radius: 8px;
+  padding: 1.75rem;
+  margin-bottom: 0.5rem;
+  background: var(--theme-background-alt);
+}
+.featured-meta {
+  font-family: var(--monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #dab56a;
+  margin: 0 0 0.75rem;
+}
+.featured h2 {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
   color: var(--theme-foreground-focus);
 }
-</style>
+.featured > p {
+  font-size: 15px;
+  color: var(--theme-foreground);
+  max-width: 640px;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+}
+.featured-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  font-family: var(--monospace);
+  font-size: 12px;
+  color: var(--theme-foreground-muted);
+  margin-bottom: 1.5rem;
+}
+.featured-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.featured-links .btn-live {
+  background: #dab56a;
+  color: #141923;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+.featured-links .btn-live:hover { background: #c9a45a; }
+.featured-links .btn-story {
+  font-size: 13px;
+  color: var(--theme-foreground-muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.featured-links .btn-story:hover { color: var(--theme-foreground-focus); }
 
-<div class="hero">
-  <h1>Nico Purnomo</h1>
-  <h2>Product manager. Data, ML, and the occasional rabbit hole.</h2>
-  <p>I build data, ML, and AI products professionally, and share the analytical side here — interactive projects, articles, and ideas I find interesting.</p>
-  <a href="https://terminal-website-npurnomo.vercel.app/" class="terminal-link">↗ terminal-website-npurnomo.vercel.app</a>
-</div>
-
-<div class="grid grid-cols-2" style="grid-auto-rows: 400px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "NVIDIA (NVDA) Stock Price",
-      subtitle: "Monthly close, split-adjusted, 2020–2024. The AI era in one chart.",
-      width,
-      height: 320,
-      y: {grid: true, label: "Price (USD)"},
-      x: {label: "Date"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(nvda, {x: "Date", y: "Close", tip: true, stroke: "#89AB6C"})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Global Earthquakes 2001–2023",
-      subtitle: "782 significant events. Ring of Fire clearly visible.",
-      width,
-      height: 350,
-      projection: "equirectangular",
-      r: {range: [1, 6]},
-      marks: [
-        Plot.geo(land, {fill: "#000", fillOpacity: 0.4}),
-        Plot.dot(earthquake, {
-          x: "longitude",
-          y: "latitude",
-          r: "sig",
-          fill: "#dab56a",
-          fillOpacity: 0.6,
-          tip: false
-        })
-      ]
-    }))
-  }</div>
-</div>
-
-```js
-import * as topojson from "npm:topojson-client";
-const nvda = await FileAttachment("nvda.csv").csv({typed: true});
-const earthquake = await FileAttachment("data/earthquake_1995-2023.csv").csv({typed: true});
-const land50m = await FileAttachment("data/land-50m.json").json();
-const land = topojson.feature(land50m, land50m.objects.land);
-```
-
----
-
-<style>
+/* Work cards */
 .section-label {
   font-family: var(--monospace);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--theme-foreground-muted);
-  margin: 2rem 0 0.75rem;
+  margin: 2.25rem 0 0.75rem;
 }
 .work-card {
   display: block;
@@ -135,12 +140,13 @@ const land = topojson.feature(land50m, land50m.objects.land);
   border-radius: 3px;
   padding: 1px 6px;
 }
+
+/* Contact */
 .contact-row {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--theme-foreground-faintest);
   font-size: 14px;
-  color: var(--theme-foreground-muted);
 }
 .contact-row a {
   color: var(--theme-foreground-muted);
@@ -150,13 +156,29 @@ const land = topojson.feature(land50m, land50m.objects.land);
 .contact-row a:hover { color: #dab56a; }
 </style>
 
-<p class="section-label">Case Studies</p>
-<div class="grid grid-cols-1">
-  <a class="work-card" href="./09-World-Cup-Pub">
-    <h3>World Cup Pub — 0→1 in 48 Hours</h3>
-    <p>Mobile-first app that helps London football fans find and book a pub to watch the 2026 World Cup. Built in 48 hours. Full build story: spec, architecture, agent workflow, post-launch bugs.</p>
-    <div class="tags"><span class="tag">product</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Google Maps</span></div>
-  </a>
+<div class="hero">
+  <h1>Nico Purnomo</h1>
+  <h2>Product manager. Data, ML, and the occasional rabbit hole.</h2>
+  <p>I build data, ML, and AI products professionally, and share the analytical side here — interactive projects, articles, and ideas I find interesting.</p>
+  <a href="https://terminal-website-npurnomo.vercel.app/" class="terminal-link">↗ terminal-website-npurnomo.vercel.app</a>
+</div>
+
+<p class="section-label">Latest</p>
+<div class="featured">
+  <p class="featured-meta">Case Study · June 2026</p>
+  <h2>World Cup Pub — 0→1 in 48 Hours</h2>
+  <p>Mobile-first web app that helps London football fans find and book a pub for the 2026 World Cup. Built from idea to live in 48 hours: product spec, Jira backlog, React frontend, Google Maps integration, Vercel deploy. Post-mortem covers architecture decisions, two post-launch bugs, and what the agent workflow actually looked like.</p>
+  <div class="featured-stats">
+    <span>48 hrs idea → live</span>
+    <span>Next.js · TypeScript</span>
+    <span>Google Maps API</span>
+    <span>0 TypeScript errors</span>
+    <span>Live during the 2026 World Cup</span>
+  </div>
+  <div class="featured-links">
+    <a href="https://world-cup-pub.vercel.app" class="btn-live" target="_blank">Live app ↗</a>
+    <a href="./09-World-Cup-Pub" class="btn-story">Read the build story →</a>
+  </div>
 </div>
 
 <p class="section-label">Projects</p>
