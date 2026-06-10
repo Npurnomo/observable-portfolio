@@ -9,27 +9,17 @@ export default {
   pages: [
     {name: "About", path: "/about"},
     {
-      name: "Case Studies",
+      name: "Work",
       pages: [
         {name: "World Cup Pub — 0→1 in 48hrs", path: "/09-World-Cup-Pub"},
-      ]
-    },
-    {
-      name: "Articles",
-      pages: [
-        {name: "About Up Banking", path: "/01-Up-article"},
-        {name: "Simile, Here, and Everywhere", path: "/02-Simile-article"},
-        {name: "Data Reduction", path: "/04-Data-Reduction-article"},
-      ]
-    },
-    {
-      name: "Projects",
-      pages: [
         {name: "Industry Financials", path: "/03-Finance-dashb"},
         {name: "Remember Covid?", path: "/05-covid"},
         {name: "Earthquakes and Extreme Values", path: "/06-Earthquake_PoT"},
         {name: "SQL Away!", path: "/07-Customer-dashb"},
         {name: "Heathrow Forecast", path: "/08-Heathrow-forecast"},
+        {name: "About Up Banking", path: "/01-Up-article"},
+        {name: "Simile, Here, and Everywhere", path: "/02-Simile-article"},
+        {name: "Data Reduction", path: "/04-Data-Reduction-article"},
       ]
     },
   ],
