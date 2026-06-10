@@ -9,6 +9,12 @@ export default {
   pages: [
     {name: "About", path: "/about"},
     {
+      name: "Case Studies",
+      pages: [
+        {name: "World Cup Pub — 0→1 in 48hrs", path: "/09-World-Cup-Pub"},
+      ]
+    },
+    {
       name: "Articles",
       pages: [
         {name: "About Up Banking", path: "/01-Up-article"},

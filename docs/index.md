@@ -93,15 +93,123 @@ const land = topojson.feature(land50m, land50m.objects.land);
 
 ---
 
-<div class="grid grid-cols-4">
-  <div class="card">
-    <strong>Get in touch</strong><br>
-    <a href="mailto:purnomonico@gmail.com">purnomonico@gmail.com</a><br>
-    <a href="https://www.linkedin.com/in/nico-purnomo/">LinkedIn</a>
-  </div>
-  <div class="card">
-    <strong>Terminal site</strong><br>
-    An interactive CLI version of this portfolio.<br>
-    <a href="https://terminal-website-npurnomo.vercel.app/">Open terminal ↗</a>
-  </div>
+<style>
+.section-label {
+  font-family: var(--monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--theme-foreground-muted);
+  margin: 2rem 0 0.75rem;
+}
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+  border: 1px solid var(--theme-foreground-faintest);
+  border-radius: 8px;
+  transition: border-color 200ms ease;
+  height: 100%;
+}
+.work-card:hover { border-color: #dab56a; }
+.work-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  color: var(--theme-foreground-focus);
+}
+.work-card p {
+  font-size: 13px;
+  color: var(--theme-foreground-muted);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag {
+  font-family: var(--monospace);
+  font-size: 10px;
+  color: #89AB6C;
+  background: var(--theme-background-alt);
+  border: 1px solid var(--theme-foreground-faintest);
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+.contact-row {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--theme-foreground-faintest);
+  font-size: 14px;
+  color: var(--theme-foreground-muted);
+}
+.contact-row a {
+  color: var(--theme-foreground-muted);
+  text-decoration: none;
+  margin-right: 1.25rem;
+}
+.contact-row a:hover { color: #dab56a; }
+</style>
+
+<p class="section-label">Case Studies</p>
+<div class="grid grid-cols-1">
+  <a class="work-card" href="./09-World-Cup-Pub">
+    <h3>World Cup Pub — 0→1 in 48 Hours</h3>
+    <p>Mobile-first app that helps London football fans find and book a pub to watch the 2026 World Cup. Built in 48 hours. Full build story: spec, architecture, agent workflow, post-launch bugs.</p>
+    <div class="tags"><span class="tag">product</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Google Maps</span></div>
+  </a>
+</div>
+
+<p class="section-label">Projects</p>
+<div class="grid grid-cols-3">
+  <a class="work-card" href="./03-Finance-dashb">
+    <h3>Industry Financials</h3>
+    <p>Interactive dashboard comparing financial metrics across US industries. Built on Damodaran's public data — pick any two metrics and explore.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">dashboard</span><span class="tag">Observable Plot</span></div>
+  </a>
+  <a class="work-card" href="./05-covid">
+    <h3>Remember Covid?</h3>
+    <p>Time series of excess deaths by country using The Economist's model. Confidence bands show estimation uncertainty across 2020–2024.</p>
+    <div class="tags"><span class="tag">time-series</span><span class="tag">public health</span><span class="tag">Observable Plot</span></div>
+  </a>
+  <a class="work-card" href="./06-Earthquake_PoT">
+    <h3>Earthquakes & Extreme Values</h3>
+    <p>Global seismic data mapped and modelled with Generalised Pareto Distribution. Estimates the probability of extreme magnitude events.</p>
+    <div class="tags"><span class="tag">statistics</span><span class="tag">mapping</span><span class="tag">R</span></div>
+  </a>
+  <a class="work-card" href="./07-Customer-dashb">
+    <h3>SQL Away!</h3>
+    <p>Write SQL queries live in the browser against a customer orders dataset. Powered by DuckDB-WASM — no server, runs entirely client-side.</p>
+    <div class="tags"><span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">interactive</span></div>
+  </a>
+  <a class="work-card" href="./08-Heathrow-forecast">
+    <h3>Heathrow Forecast</h3>
+    <p>ARIMA time series model forecasting passenger traffic at Heathrow. Accounts for Covid impact via dummy variable — with and without comparison.</p>
+    <div class="tags"><span class="tag">forecasting</span><span class="tag">ARIMA</span><span class="tag">R</span></div>
+  </a>
+</div>
+
+<p class="section-label">Articles</p>
+<div class="grid grid-cols-2">
+  <a class="work-card" href="./01-Up-article">
+    <h3>Up Banking & Neobanks (2021)</h3>
+    <p>How digital-only banks navigated the pandemic, what Xinja's collapse meant for the industry, and why Up's model was different.</p>
+    <div class="tags"><span class="tag">fintech</span><span class="tag">writing</span></div>
+  </a>
+  <a class="work-card" href="./02-Simile-article">
+    <h3>Simile, Here & Everywhere (2023)</h3>
+    <p>On similarity as a concept — from cosine distance to clustering to recommendation systems. Why measuring likeness is harder than it looks.</p>
+    <div class="tags"><span class="tag">statistics</span><span class="tag">ML</span><span class="tag">writing</span></div>
+  </a>
+  <a class="work-card" href="./04-Data-Reduction-article">
+    <h3>Data Reduction through Dynamic Range (2023)</h3>
+    <p>Dynamic range, audio compression, and SVD — a unified lens on what it means to reduce complexity while preserving meaning.</p>
+    <div class="tags"><span class="tag">data</span><span class="tag">SVD</span><span class="tag">writing</span></div>
+  </a>
+</div>
+
+<div class="contact-row">
+  <a href="mailto:purnomonico@gmail.com">purnomonico@gmail.com</a>
+  <a href="https://www.linkedin.com/in/nico-purnomo/">LinkedIn</a>
+  <a href="https://github.com/Npurnomo">GitHub</a>
+  <a href="https://purnomonico.medium.com/">Medium</a>
 </div>
