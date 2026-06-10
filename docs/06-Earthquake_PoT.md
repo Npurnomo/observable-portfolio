@@ -33,6 +33,7 @@ Plotting the map of earthquakes around the globe from 2001 to 2024 reveals the p
 
 ```js
 import * as Plot from "npm:@observablehq/plot";
+import * as topojson from "npm:topojson-client";
 import {format} from "npm:d3";
 ```
 
