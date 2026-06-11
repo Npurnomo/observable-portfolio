@@ -1,6 +1,6 @@
 ---
 theme: dashboard
-title: SQL Away!!
+title: SQL Away!
 toc: false
 ---
 # SQL Away through simulated data!

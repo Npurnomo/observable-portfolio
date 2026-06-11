@@ -1,9 +1,9 @@
 ---
-title: 02 Simile, Here, and Everywhere
+title: Simile, Here, and Everywhere
 theme: "light"
 ---
 
-# Simile, Here, and Everywhere (2023)
+# Simile, Here, and Everywhere
 
 <figure>
   <img src="./components/images/sim1.jpeg"

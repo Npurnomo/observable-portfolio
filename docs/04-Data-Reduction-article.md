@@ -1,10 +1,10 @@
 ---
-title: 04 Data Reduction
+title: Data Reduction
 theme: "light"
 
 ---
 
-# Data Reduction through Dynamic Range & Compression (2023)
+# Data Reduction through Dynamic Range & Compression
 
 <figure>
   <img src="./components/images/dat1.jpeg"

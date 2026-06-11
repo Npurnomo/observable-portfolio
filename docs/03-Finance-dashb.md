@@ -1,6 +1,6 @@
 ---
 theme: dashboard
-title: Finance Dashboard 
+title: Industry Financials
 toc: false
 ---
 # Exploring Financial Dynamics Across Different Industries 

@@ -1,8 +1,8 @@
 ---
-title: 01 Up Banking
+title: Up Banking
 ---
 
-# An Overview of Neobanks and How “Up” is Performing (2021)
+# An Overview of Neobanks and How “Up” is Performing
 <figure>
   <img src="./components/images/up1.jpeg"
     width="650" 

@@ -1,5 +1,5 @@
 ---
-title: 06 Earthquakes and Extreme Values
+title: Earthquakes and Extreme Values
 
 ---
 

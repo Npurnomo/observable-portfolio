@@ -35,12 +35,12 @@ toc: false
 }
 .hero .terminal-link:hover { color: var(--theme-foreground-focus); }
 
-/* Featured card */
+/* Featured */
 .featured {
   border: 1px solid #dab56a;
   border-radius: 8px;
   padding: 1.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
   background: var(--theme-background-alt);
 }
 .featured-meta {
@@ -98,37 +98,42 @@ toc: false
 }
 .featured-links .btn-story:hover { color: var(--theme-foreground-focus); }
 
-/* Work cards */
+/* Section label */
 .section-label {
   font-family: var(--monospace);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--theme-foreground-muted);
-  margin: 2.25rem 0 0.75rem;
-}
-.work-card {
+  margin: 0 0 0.75rem;
   display: block;
+}
+
+/* Work cards */
+.work-card {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
   padding: 1rem;
   border: 1px solid var(--theme-foreground-faintest);
   border-radius: 8px;
   transition: border-color 200ms ease;
-  height: 100%;
 }
 .work-card:hover { border-color: #dab56a; }
 .work-card h3 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.4rem;
   color: var(--theme-foreground-focus);
+  line-height: 1.3;
 }
 .work-card p {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--theme-foreground-muted);
   margin: 0 0 0.75rem;
   line-height: 1.5;
+  flex: 1;
 }
 .tags { display: flex; flex-wrap: wrap; gap: 4px; }
 .tag {
@@ -163,7 +168,7 @@ toc: false
   <a href="https://terminal-website-npurnomo.vercel.app/" class="terminal-link">↗ terminal-website-npurnomo.vercel.app</a>
 </div>
 
-<p class="section-label">Latest</p>
+<span class="section-label">Latest</span>
 <div class="featured">
   <p class="featured-meta">Case Study · June 2026</p>
   <h2>World Cup Pub — 0→1 in 48 Hours</h2>
@@ -181,17 +186,17 @@ toc: false
   </div>
 </div>
 
-<p class="section-label">Projects</p>
-<div class="grid grid-cols-3">
+<span class="section-label">Work</span>
+<div class="grid grid-cols-4">
   <a class="work-card" href="./03-Finance-dashb">
     <h3>Industry Financials</h3>
-    <p>Interactive dashboard comparing financial metrics across US industries. Built on Damodaran's public data — pick any two metrics and explore.</p>
+    <p>Interactive dashboard comparing financial metrics across US industries. Pick any two metrics and explore the relationships.</p>
     <div class="tags"><span class="tag">finance</span><span class="tag">dashboard</span><span class="tag">Observable Plot</span></div>
   </a>
   <a class="work-card" href="./05-covid">
     <h3>Remember Covid?</h3>
-    <p>Time series of excess deaths by country using The Economist's model. Confidence bands show estimation uncertainty across 2020–2024.</p>
-    <div class="tags"><span class="tag">time-series</span><span class="tag">public health</span><span class="tag">Observable Plot</span></div>
+    <p>Excess death estimates by country using The Economist's model. Confidence bands show estimation uncertainty across 2020–2024.</p>
+    <div class="tags"><span class="tag">time-series</span><span class="tag">public health</span></div>
   </a>
   <a class="work-card" href="./06-Earthquake_PoT">
     <h3>Earthquakes & Extreme Values</h3>
@@ -200,31 +205,27 @@ toc: false
   </a>
   <a class="work-card" href="./07-Customer-dashb">
     <h3>SQL Away!</h3>
-    <p>Write SQL queries live in the browser against a customer orders dataset. Powered by DuckDB-WASM — no server, runs entirely client-side.</p>
+    <p>Write SQL queries live in the browser against a customer orders dataset. Powered by DuckDB-WASM — no server required.</p>
     <div class="tags"><span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">interactive</span></div>
   </a>
   <a class="work-card" href="./08-Heathrow-forecast">
     <h3>Heathrow Forecast</h3>
-    <p>ARIMA time series model forecasting passenger traffic at Heathrow. Accounts for Covid impact via dummy variable — with and without comparison.</p>
+    <p>ARIMA model forecasting passenger traffic at Heathrow. Dummy variable accounts for Covid — with and without comparison.</p>
     <div class="tags"><span class="tag">forecasting</span><span class="tag">ARIMA</span><span class="tag">R</span></div>
   </a>
-</div>
-
-<p class="section-label">Articles</p>
-<div class="grid grid-cols-2">
   <a class="work-card" href="./01-Up-article">
-    <h3>Up Banking & Neobanks (2021)</h3>
+    <h3>Up Banking & Neobanks</h3>
     <p>How digital-only banks navigated the pandemic, what Xinja's collapse meant for the industry, and why Up's model was different.</p>
     <div class="tags"><span class="tag">fintech</span><span class="tag">writing</span></div>
   </a>
   <a class="work-card" href="./02-Simile-article">
-    <h3>Simile, Here & Everywhere (2023)</h3>
+    <h3>Simile, Here & Everywhere</h3>
     <p>On similarity as a concept — from cosine distance to clustering to recommendation systems. Why measuring likeness is harder than it looks.</p>
     <div class="tags"><span class="tag">statistics</span><span class="tag">ML</span><span class="tag">writing</span></div>
   </a>
   <a class="work-card" href="./04-Data-Reduction-article">
-    <h3>Data Reduction through Dynamic Range (2023)</h3>
-    <p>Dynamic range, audio compression, and SVD — a unified lens on what it means to reduce complexity while preserving meaning.</p>
+    <h3>Data Reduction through Dynamic Range</h3>
+    <p>Audio compression, photography, and SVD — a unified lens on what it means to reduce complexity while preserving meaning.</p>
     <div class="tags"><span class="tag">data</span><span class="tag">SVD</span><span class="tag">writing</span></div>
   </a>
 </div>
