@@ -1,8 +1,17 @@
 ---
 title: Data Reduction
-theme: "light"
-
 ---
+
+<style>
+figure img[src$=".png"] {
+  filter: invert(1);
+  border-radius: 6px;
+  opacity: 0.92;
+}
+svg text {
+  fill: white !important;
+}
+</style>
 
 # Data Reduction through Dynamic Range & Compression
 
@@ -43,11 +52,31 @@ Dynamic range, captivating as it is, comes hand in hand with another significant
 
 Think of compression as the conductor of an orchestra, ensuring that no instrument drowns out the others, just as no element in an image or audio recording is lost in the pursuit of efficiency. It's the science of finding equilibrium between the greatness of a full orchestra and the limitations of a compact bedside speaker.
 
-<figure>
-  <img src="./components/images/dat3.png"
-  >
-  <figcaption></figcaption>
-</figure>
+```js
+Plot.plot({
+  height: 180,
+  marginTop: 20,
+  marginRight: 40,
+  marginBottom: 20,
+  marginLeft: 30,
+  style: {color: "white", background: "transparent"},
+  x: {axis: null},
+  y: {axis: null, domain: [-2, 2]},
+  marks: [
+    Plot.ruleX([0], {stroke: "var(--theme-foreground-muted)", strokeWidth: 1.5}),
+    Plot.ruleY([0], {stroke: "var(--theme-foreground-muted)", strokeWidth: 1.5}),
+    Plot.ruleY([0.85], {stroke: "var(--theme-foreground)", strokeDasharray: "8,5", strokeWidth: 1.5}),
+    Plot.ruleY([-0.85], {stroke: "var(--theme-foreground)", strokeDasharray: "8,5", strokeWidth: 1.5}),
+    Plot.line(
+      Array.from({length: 300}, (_, i) => ({
+        t: i / 299 * 7.5,
+        y: 1.5 * Math.sin(i / 299 * 7.5 - 1.0)
+      })),
+      {x: "t", y: "y", stroke: "var(--theme-foreground)", strokeWidth: 2.5}
+    )
+  ]
+})
+```
 
 As shown by the above diagram, a signal's amplitude can be limited to the dotted line only as we take away the highest highs and the lowest lows to maintain the balance of what we want to actually convey as creators. This is usually done behind the scenes as to capture the most information with the least amount of storage. We also often compress our digital documents and zip them to make them smaller in size. Or similar concept to a statistical model in which we choose only the most important features.
 
@@ -58,7 +87,7 @@ SVD, although a technical term, carries profound implications for understanding 
 Consider a puzzle made up of distinct pieces that interlock seamlessly, forming a larger picture. Similarly, SVD deconstructs a dataset, laying its elements bare that define its behaviour. It's like observing the distinct ingredients that meld together to form a dish.
 
 <figure>
-  <img src="./components/images/dat4.png"
+  <img src="./components/images/dat4.png" style="filter: none"
   >
   <figcaption></figcaption>
 </figure>

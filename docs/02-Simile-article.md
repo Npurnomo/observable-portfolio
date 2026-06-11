@@ -1,7 +1,17 @@
 ---
 title: Simile, Here, and Everywhere
-theme: "light"
 ---
+
+<style>
+figure img[src$=".png"] {
+  filter: invert(1);
+  border-radius: 6px;
+  opacity: 0.92;
+}
+svg text {
+  fill: white !important;
+}
+</style>
 
 # Simile, Here, and Everywhere
 
@@ -26,11 +36,21 @@ In the following sections, I will try to lay out what I think about similarity a
 ## Similarity As a Measure of Distance
 We can imagine a simple number line representing just one dimension. Let’s say it’s for a person’s height in cm. The closeness of points on this line indicates their degree of similarity. When two things are close together, they share not so apart values of that feature (how tall they are). Hence, they are similar in height.
 
-<figure>
-  <img src="./components/images/sim2.png"
-  >
-  <figcaption></figcaption>
-</figure>
+```js
+Plot.plot({
+  height: 100,
+  marginTop: 48,
+  marginBottom: 36,
+  style: {color: "white", background: "transparent"},
+  x: {label: "Height (cm)", grid: true, domain: [148, 182]},
+  y: {axis: null, range: [50, 50]},
+  marks: [
+    Plot.ruleY([0], {stroke: "var(--theme-foreground-faintest)"}),
+    Plot.dot(simPeople, {x: "height", y: 0, fill: "#dab56a", r: 7, stroke: "var(--theme-background)", strokeWidth: 2}),
+    Plot.text(simPeople, {x: "height", y: 0, text: "name", dy: -20, fill: "white", fontSize: 13, fontWeight: 500})
+  ]
+})
+```
 
 By analysing the data through this one-dimensional lens, we can gain valuable insights and group objects based on their similarities, even when working with only one dimension.
 
@@ -41,36 +61,124 @@ When comparing multiple objects, we are more likely to observe more than one fea
 
 Let’s now plot our points in a 2-dimensional space.
 
-<figure>
-  <img src="./components/images/sim3.png"
-  >
-  <figcaption></figcaption>
-</figure>
+```js
+Plot.plot({
+  height: 280,
+  marginLeft: 50,
+  style: {color: "white", background: "transparent"},
+  x: {label: "Height (cm)", grid: true, domain: [148, 182]},
+  y: {label: "Weight (kg)", grid: true, domain: [44, 82]},
+  marks: [
+    Plot.dot(simPeople, {x: "height", y: "weight", fill: "#dab56a", r: 9, stroke: "var(--theme-background)", strokeWidth: 2}),
+    Plot.text(simPeople, {x: "height", y: "weight", text: "name", dx: 22, fill: "white", fontSize: 13, fontWeight: 500})
+  ]
+})
+```
 
 
 Now what? We can see that one is closer to another (Bob and Cath are closer than that of Adam and Cath), but we do need a number to “quantify” this. One thing I’ve learned throughout the years is the desire for us humans to quantify different things. We tend to forget some potential biases, such as the “anchoring effect”, where humans thoughts would depend on a particular “anchor”. I do see this “similar” to the concept of that of the Bayes’ Theorem (when an information about something is based on prior knowledge of that thing), but maybe let’s cover this in another time.
 
 Now that we have the points, think about what we can do and how the values of the features help map out where they lie. We can just use distance between the points, but when we have many points with a huge range, such measure would become trivial. We can maybe pull lines from the origin and make what we call vectors (lines with directions). These vectors would contain information of both features (weight and height) and between them, we can measure the angle!
 
-<figure>
-  <img src="./components/images/sim4.png"
-  >
-  <figcaption></figcaption>
-</figure>
+```js
+Plot.plot({
+  height: 280,
+  marginLeft: 60,
+  marginTop: 20,
+  style: {color: "white", background: "transparent"},
+  x: {label: "Height (cm)", grid: true, domain: [0, 185]},
+  y: {label: "Weight (kg)", grid: true, domain: [0, 82]},
+  marks: [
+    Plot.arrow(simPeople, {
+      x1: 0, y1: 0, x2: "height", y2: "weight",
+      stroke: "white", strokeWidth: 1.5
+    }),
+    Plot.dot(simPeople, {x: "height", y: "weight", fill: "#dab56a", r: 8, stroke: "var(--theme-background)", strokeWidth: 2}),
+    Plot.text(
+      [{x: 168, y: 50, n: "Adam"}, {x: 165, y: 78, n: "Bob"}, {x: 179, y: 68, n: "Cath"}],
+      {x: "x", y: "y", text: "n", fill: "white", fontSize: 13, fontWeight: 500}
+    )
+  ]
+})
+```
 
 ## The Angular Distance
 A nice property of angles is that it has a fix range. With a little algebra on the below, we can get what we usually call the cosine similarity — also a very cool measure of similarity. This involves the dot product and normalisation by the length of each vector. Cosine values also range between -1 and 1, and the smaller the angle (x) the higher cos x will be. Hence, similar points or people in our context would have higher cos x values between them.
 
-<figure>
-  <img src="./components/images/sim5.png"
-  >
-  <figcaption></figcaption>
-</figure>
+```js
+((a1, a2, len, arcR) => {
+  const arc = Array.from({length: 25}, (_, i) => ({
+    x: arcR * Math.cos(a2 + (a1 - a2) * i / 24),
+    y: arcR * Math.sin(a2 + (a1 - a2) * i / 24)
+  }));
+  const vectors = [
+    {x1: 0, y1: 0, x2: len * Math.cos(a1), y2: len * Math.sin(a1)},
+    {x1: 0, y1: 0, x2: len * Math.cos(a2), y2: len * Math.sin(a2)}
+  ];
+  return Plot.plot({
+    width: 450, height: 200,
+    style: {color: "white", background: "transparent"},
+    x: {axis: null, domain: [-5, 115]},
+    y: {axis: null, domain: [-25, 78]},
+    marks: [
+      Plot.arrow(vectors, {x1: "x1", y1: "y1", x2: "x2", y2: "y2",
+        stroke: "white", strokeWidth: 2}),
+      Plot.line(arc, {x: "x", y: "y", stroke: "white", strokeWidth: 1.5}),
+      Plot.text([
+        {x: len * Math.cos(a1) - 8, y: len * Math.sin(a1) + 10, t: "Bob"},
+        {x: len * Math.cos(a2) + 8, y: len * Math.sin(a2) - 10, t: "Cath"}
+      ], {x: "x", y: "y", text: "t", fill: "white", fontSize: 13, fontWeight: 500}),
+      Plot.text([{x: arcR * Math.cos((a1 + a2) / 2) + 6, y: arcR * Math.sin((a1 + a2) / 2) + 2, t: "x"}],
+        {x: "x", y: "y", text: "t", fill: "white", fontSize: 12, fontStyle: "italic"}),
+      Plot.text([{x: 50, y: -16, t: "Bob · Cath = |Bob| |Cath| cos x"}],
+        {x: "x", y: "y", text: "t", fill: "rgba(255,255,255,0.6)", fontSize: 12})
+    ]
+  });
+})(Math.PI * 0.25, Math.PI * 0.14, 90, 20)
+```
 
 ## The Dot Product
 Now, let’s go off on a tangent and explore why the above calculation involves the dot product. Also known as the scalar product or inner product, the dot product is a mathematical operation that takes two vectors and produces a single scalar value. It’s a way to measure the alignment between two vectors in a multidimensional space. Another way to think about it is by pairing out one vector and apply a matrix multiplication with the other vector transposed as some sort of a linear transformation. We will achieve the same scalar value using equivalent calculation steps as the dot product. This understanding is also often referred to mapping and projection. I really enjoyed this duality explanation here.
 
 Going back to our example, we can make sense of this in a way that for each feature / dimension, we are trying to find out how much of a person’s height and weight is part of the other person’s. Then we sum them up.
+
+```js
+((a1, a2, len) => {
+  const bx = len * Math.cos(a1), by = len * Math.sin(a1);
+  const cx = Math.cos(a2), cy = Math.sin(a2);
+  const t = bx * cx + by * cy;
+  const px = t * cx, py = t * cy;
+  const eps = 5;
+  const sq = [
+    {x: px,                   y: py},
+    {x: px - eps*cy,          y: py + eps*cx},
+    {x: px - eps*cy + eps*cx, y: py + eps*cx + eps*cy},
+    {x: px + eps*cx,          y: py + eps*cy},
+    {x: px,                   y: py}
+  ];
+  return Plot.plot({
+    width: 440, height: 220,
+    style: {color: "white", background: "transparent"},
+    x: {axis: null, domain: [-5, 115]},
+    y: {axis: null, domain: [-28, 90]},
+    marks: [
+      Plot.arrow([{x1: 0, y1: 0, x2: (t+12)*cx, y2: (t+12)*cy}],
+        {x1:"x1", y1:"y1", x2:"x2", y2:"y2", stroke:"white", strokeWidth:2}),
+      Plot.arrow([{x1: 0, y1: 0, x2: bx, y2: by}],
+        {x1:"x1", y1:"y1", x2:"x2", y2:"y2", stroke:"white", strokeWidth:2}),
+      Plot.line([{x: bx, y: by}, {x: px, y: py}],
+        {x:"x", y:"y", stroke:"rgba(255,255,255,0.5)", strokeWidth:1.5, strokeDasharray:"5,3"}),
+      Plot.line(sq, {x:"x", y:"y", stroke:"rgba(255,255,255,0.5)", strokeWidth:1}),
+      Plot.dot([{x: px, y: py}], {x:"x", y:"y", fill:"white", r:3}),
+      Plot.text([
+        {x: bx + 8,         y: by + 14,            t: "Bob"},
+        {x: (t+12)*cx + 8,  y: (t+12)*cy - 14,     t: "Cath"},
+        {x: (bx+px)/2 - 28, y: (by+py)/2 + 4,      t: "projection"}
+      ], {x:"x", y:"y", text:"t", fill:"white", fontSize:12})
+    ]
+  });
+})(Math.PI * 0.25, Math.PI * 0.14, 90)
+```
 
 An even further tangent is how this is also actually covariance and correlation. Here’s a great definition by Oliver Knill (2011),
 
@@ -90,3 +198,11 @@ These examples highlight the broad range of applications where similarity measur
 
 --- 
 Hope this can be interesting to some. Do let me know if I can further improve this.
+
+```js
+const simPeople = [
+  {name: "Adam", height: 155, weight: 50},
+  {name: "Bob",  height: 175, weight: 74},
+  {name: "Cath", height: 170, weight: 68}
+];
+```
