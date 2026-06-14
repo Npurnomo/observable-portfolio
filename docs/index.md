@@ -182,12 +182,18 @@ toc: false
   </div>
   <div class="featured-links">
     <a href="https://world-cup-pub.vercel.app" class="btn-live" target="_blank">Live app ↗</a>
-    <a href="./09-World-Cup-Pub" class="btn-story">Read the build story →</a>
+    <a href="./09-World-Cup-Pub" class="btn-story">Part 1: Build story →</a>
+    <a href="./10-World-Cup-Pub-2" class="btn-story">Part 2: Steering the Agent →</a>
   </div>
 </div>
 
 <span class="section-label">Work</span>
 <div class="grid grid-cols-4">
+  <a class="work-card" href="./10-World-Cup-Pub-2">
+    <h3>World Cup Pub, Part 2: Steering the Agent</h3>
+    <p>The human side of a 48-hour AI-assisted build — what I caught, missed, and would do differently. Covers failure taxonomy, prompt discipline, and a repeatable eval checklist.</p>
+    <div class="tags"><span class="tag">AI</span><span class="tag">product</span><span class="tag">writing</span></div>
+  </a>
   <a class="work-card" href="./03-Finance-dashb">
     <h3>Industry Financials</h3>
     <p>Interactive dashboard comparing financial metrics across US industries. Pick any two metrics and explore the relationships.</p>
