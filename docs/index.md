@@ -170,25 +170,28 @@ toc: false
 
 <span class="section-label">Latest</span>
 <div class="featured">
-  <p class="featured-meta">Case Study · June 2026</p>
-  <h2>World Cup Pub — 0→1 in 48 Hours</h2>
-  <p>Mobile-first web app that helps London football fans find and book a pub for the 2026 World Cup. Built from idea to live in 48 hours: product spec, Jira backlog, React frontend, Google Maps integration, Vercel deploy. Post-mortem covers architecture decisions, two post-launch bugs, and what the agent workflow actually looked like.</p>
+  <p class="featured-meta">Case Study · July 2026</p>
+  <h2>Quorum — Cost per Correct Decision</h2>
+  <p>An eval-governed control plane for visual AI decisions, built deliberately on a weak detector to prove the system matters more than the model. Confidence routing across a cheap detector, a vision-language model, and a human queue — every decision priced and recorded. The eval harness caught the detector naming 3 of 514 objects correctly, watched a drift alarm fire on cue, and picked up a never-trained class zero-shot. Includes an animated explainer with a locally-synthesized voiceover.</p>
   <div class="featured-stats">
-    <span>48 hrs idea → live</span>
-    <span>Next.js · TypeScript</span>
-    <span>Google Maps API</span>
-    <span>0 TypeScript errors</span>
-    <span>Live during the 2026 World Cup</span>
+    <span>5 build phases</span>
+    <span>£0.00 of a £10 cap spent</span>
+    <span>271 tests</span>
+    <span>87% decided in ~0.5s</span>
+    <span>LangGraph · Qwen2.5-VL · CLIP</span>
   </div>
   <div class="featured-links">
-    <a href="https://world-cup-pub.vercel.app" class="btn-live" target="_blank">Live app ↗</a>
-    <a href="./09-World-Cup-Pub" class="btn-story">Part 1: Build story →</a>
-    <a href="./10-World-Cup-Pub-2" class="btn-story">Part 2: Steering the Agent →</a>
+    <a href="./11-Quorum" class="btn-live">Read the case study →</a>
   </div>
 </div>
 
 <span class="section-label">Work</span>
 <div class="grid grid-cols-4">
+  <a class="work-card" href="./09-World-Cup-Pub">
+    <h3>World Cup Pub: 0→1 in 48 Hours</h3>
+    <p>From idea to live app in 48 hours — spec, Jira backlog, React frontend, Maps integration, deploy. Post-mortem with the bugs left in.</p>
+    <div class="tags"><span class="tag">product</span><span class="tag">Next.js</span><span class="tag">0→1</span></div>
+  </a>
   <a class="work-card" href="./10-World-Cup-Pub-2">
     <h3>World Cup Pub, Part 2: Steering the Agent</h3>
     <p>The human side of a 48-hour AI-assisted build — what I caught, missed, and would do differently. Covers failure taxonomy, prompt discipline, and a repeatable eval checklist.</p>
