@@ -3,6 +3,14 @@ export default {
   // The project’s title; used in the sidebar and webpage titles.
   title: "Nico Purnomo",
 
+  // Favicon: gold "N" brand chip (SVG for modern browsers, PNG/ICO fallbacks).
+  head: `
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  `,
+
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
   // lets you organize them into sections and have unlisted pages.
