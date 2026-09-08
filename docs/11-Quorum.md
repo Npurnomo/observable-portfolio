@@ -82,7 +82,7 @@ Three design rules did most of the work:
 
 ## The eval that called my bluff
 
-Phase 3 built a 184-item golden set from the TACO litter dataset and replayed it through the full pipeline. The headline numbers were bad — accuracy 0.68, F1 0.58, routing recall 0.22 — and the interesting part was *why*. The detector's mAP@0.5 came out at effectively **zero**, which smelled like a bug in my metric code. It wasn't:
+Phase 3 built a 184-item golden set from the TACO litter dataset, hand-verified every one of them, and replayed the set through the full pipeline. The headline numbers were bad — accuracy 0.67, F1 0.57, routing recall 0.22 — and the interesting part was *why*. The detector's mAP@0.5 came out at effectively **zero**, which smelled like a bug in my metric code. It wasn't:
 
 ```js
 const detections = [
@@ -113,6 +113,8 @@ Plot.plot({
 **The detector finds objects almost perfectly and names them almost randomly.** 423 of 514 predicted boxes sat on a real object; 3 carried the right label out of 59 classes. That single measurement explains everything downstream: a gate keyed on class labels under-escalates because the labels are noise, and 44 real contaminants sailed through marked clean — including a battery pile confidently labelled *"Other plastic, 0.96"*.
 
 A composite accuracy score would have hidden this completely. Splitting *localization* from *classification* — and splitting *routing* correctness from *verdict* correctness — is what turned a bad number into a diagnosis.
+
+The golden labels themselves were machine-drafted from the dataset's annotations, and the harness refused to treat them as truth: every report carried a **DRAFT** banner and every headline metric was computed over hand-verified items only, of which there were initially none. Clearing that banner meant sitting down with all 184 images. One label flipped — a "contaminated / aluminium foil" that was, on inspection, a drink can. A one-item correction is a boring result; being unable to quote a number until someone had looked is the point.
 
 ---
 
@@ -219,7 +221,7 @@ Thirty threshold configurations, and they all land in a smudge two points wide. 
 The parts of the system I'm most attached to are the ones that fired without permission:
 
 - **A decision dead-lettered live** during the first full adjudication run. Root cause: the local model server rejects large images — a 1.5 MB photo alone consumed more context than the default window. The decision retried twice with backoff, landed in the dead-letter state, stayed countable, and the fix (a bigger context window, recorded as a cache-key parameter so old outputs can't silently replay) is one line of config history.
-- **The judge got audited before being believed.** An LLM scores the adjudicator's written rationales — but its scores are labelled *uncalibrated* in every report until they agree with human scoring at κ ≥ 0.6 on a blind sample. A judge you haven't calibrated is a vibes generator.
+- **The judge got audited, and failed.** An LLM scores the adjudicator's written rationales, and its scores stay labelled *uncalibrated* until they agree with human scoring at κ ≥ 0.6 on a blind sample. So I scored thirty of them blind. Agreement came back at **κ = 0.032** — worse than chance. A rewritten rubric got it to **κ = 0.259, 60% raw agreement**: better, still nowhere near trustworthy. The report now says **NOT TRUSTED** in as many words, with the number next to it. The diagnosis is the interesting half: my judge is text-only, so it *cannot see the image it is grading against*. A rationale that names a real visible object and one that hallucinates a plausible-sounding fake are, in text, indistinguishable — both read as specific and grounded. The two worst disagreements were exactly that: fluent, confident descriptions of things that were not in the photograph. No amount of rubric wording fixes a blind judge; it needs eyes. A judge you haven't calibrated is a vibes generator — and mine turned out to be one.
 - **The adjudicator contradicted itself in writing.** One rationale described cigarette butts in detail and then concluded "clean." It's stored verbatim in the ledger — that sentence is now a test case for the next rubric revision.
 
 ---
@@ -230,7 +232,7 @@ The parts of the system I'm most attached to are the ones that fired without per
 2. **Split your metrics until they confess.** Accuracy hid everything. Localization vs classification, routing vs verdict, measured vs modelled — each split converted a grade into a cause.
 3. **Config is data with a history.** Versioned thresholds cost one join and bought a complete answer to "why did the system decide that, that day?" — which is also roughly what incoming AI regulation asks for.
 4. **Design the failure paths first.** Dead letters, retry budgets, stale-claim reaping, and no-guessing rules were all built before they were needed. All of them fired.
-5. **An honest bad number beats a flattering composite.** The flat frontier and the 0.44 adjudicator are the most persuasive artifacts this project produced. Nothing sells a measurement system like watching it catch your own assumptions.
+5. **An honest bad number beats a flattering composite.** The flat frontier, the 0.44 adjudicator, and a judge that failed its own audit at κ = 0.26 are the most persuasive artifacts this project produced. Nothing sells a measurement system like watching it catch your own assumptions — including the assumption that the thing doing the measuring is fit to.
 
 ---
 
