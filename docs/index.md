@@ -182,6 +182,7 @@ toc: false
   </div>
   <div class="featured-links">
     <a href="./11-Quorum" class="btn-live">Read the case study →</a>
+    <a href="./12-Quorum-Audit" class="btn-story">Explore the routing audit →</a>
   </div>
 </div>
 

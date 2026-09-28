@@ -20,6 +20,7 @@ export default {
       name: "Work",
       pages: [
         {name: "Quorum — Cost per Correct Decision", path: "/11-Quorum"},
+        {name: "Quorum — Routing Audit", path: "/12-Quorum-Audit"},
         {name: "World Cup Pub — 0→1 in 48hrs", path: "/09-World-Cup-Pub"},
         {name: "World Cup Pub, Part 2 — Steering the Agent", path: "/10-World-Cup-Pub-2"},
         {name: "Industry Financials", path: "/03-Finance-dashb"},

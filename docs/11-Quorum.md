@@ -16,7 +16,7 @@ I built an AI system on the worst detector I could find. Deliberately.
 
 The vertical is recycling-stream contamination: a materials recovery facility runs thousands of items past a camera every hour, and a single battery in a paper bale is a fire risk. The obvious pitch is "train a better model." I did the opposite — I took a free, hosted, visibly weak object detector and spent all five build phases on **the system around it**: a confidence gate, an escalation queue, an eval harness, a drift monitor, and a cost ledger.
 
-The bet: for most operational AI, the model is not the product. The product is knowing **when to trust the model, what each decision costs, and who should decide instead.** By the end, the system had measured its own components failing — and routed around them. That's the whole story, and every number below comes out of the system's own records.
+The bet: for most operational AI, the model is not the product. The product is knowing **when to trust the model, what each decision costs, and who should decide instead.** By the end, the system had measured its own components failing — and recorded where routing still failed. Every number below comes out of the system's own records.
 
 ---
 
@@ -115,6 +115,8 @@ Plot.plot({
 A composite accuracy score would have hidden this completely. Splitting *localization* from *classification* — and splitting *routing* correctness from *verdict* correctness — is what turned a bad number into a diagnosis.
 
 The golden labels themselves were machine-drafted from the dataset's annotations, and the harness refused to treat them as truth: every report carried a **DRAFT** banner and every headline metric was computed over hand-verified items only, of which there were initially none. Clearing that banner meant sitting down with all 184 images. One label flipped — a "contaminated / aluminium foil" that was, on inspection, a drink can. A one-item correction is a boring result; being unable to quote a number until someone had looked is the point.
+
+**A later audit found a separate limit:** 152 of the 184 images came from the TACO v15 export's train split. The remaining 32 valid/test images scored 17/32 correct, compared with 124/184 overall. The smaller slice is too small for a firm comparison, and I have not verified the hosted checkpoint's training lineage or ruled out related images across splits. Treat the numbers here as a pipeline diagnostic, not an independent estimate of deployment accuracy. [Explore the interactive routing and cohort audit →](./12-Quorum-Audit)
 
 ---
 
