@@ -1,0 +1,5 @@
+{"id": "greeting", "input": "greeting", "expected": "Hello", "expected_route": "local"}
+{"id": "hours", "input": "hours", "expected": "9–5", "expected_route": "local"}
+{"id": "address", "input": "address", "expected": "London", "expected_route": "local"}
+{"id": "citation", "input": "citation", "expected": "Checked source", "expected_route": "hosted"}
+{"id": "ambiguous", "input": "ambiguous", "expected": "Reviewed locally", "expected_route": "local_review"}

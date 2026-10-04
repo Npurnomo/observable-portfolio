@@ -1,0 +1,5 @@
+{"id": "invoice_number", "input": "invoice_number", "expected": "INV-100", "expected_route": "rules"}
+{"id": "currency", "input": "currency", "expected": "USD", "expected_route": "rules"}
+{"id": "due_date", "input": "due_date", "expected": "2026-10-31", "expected_route": "rules"}
+{"id": "ambiguous_total", "input": "ambiguous_total", "expected": "123.45", "expected_route": "llm"}
+{"id": "unusual_layout", "input": "unusual_layout", "expected": "ACME", "expected_route": "llm"}

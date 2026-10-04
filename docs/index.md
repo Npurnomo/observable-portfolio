@@ -188,6 +188,11 @@ toc: false
 
 <span class="section-label">Work</span>
 <div class="grid grid-cols-4">
+  <a class="work-card" href="./13-Routeval">
+    <h3>Routeval: What Did Your Escalations Buy?</h3>
+    <p>A small Python tool for answer quality, routing policy, and cost. Explore a real offline report and try the 0.1.0 candidate with five cases.</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">evals</span><span class="tag">trial kit</span></div>
+  </a>
   <a class="work-card" href="./09-World-Cup-Pub">
     <h3>World Cup Pub: 0→1 in 48 Hours</h3>
     <p>From idea to live app in 48 hours — spec, Jira backlog, React frontend, Maps integration, deploy. Post-mortem with the bugs left in.</p>

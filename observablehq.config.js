@@ -19,6 +19,7 @@ export default {
     {
       name: "Work",
       pages: [
+        {name: "Routeval — Routing Evals", path: "/13-Routeval"},
         {name: "Quorum — Cost per Correct Decision", path: "/11-Quorum"},
         {name: "Quorum — Routing Audit", path: "/12-Quorum-Audit"},
         {name: "World Cup Pub — 0→1 in 48hrs", path: "/09-World-Cup-Pub"},

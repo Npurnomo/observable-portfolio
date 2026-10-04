@@ -1,0 +1,16 @@
+{
+  "pipeline": "pipeline.py:evaluate",
+  "golden": "golden.jsonl",
+  "auto_routes": [
+    "local"
+  ],
+  "escalation_routes": [
+    "hosted",
+    "local_review"
+  ],
+  "cost_basis": "api-only",
+  "runs_dir": "runs",
+  "min_accuracy": 1.0,
+  "min_escalation_recall": 1.0,
+  "allow_errors": false
+}

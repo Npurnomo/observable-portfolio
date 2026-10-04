@@ -1,0 +1,5 @@
+{"id": "hours", "input": "hours", "expected": "9–5", "expected_route": "self_service"}
+{"id": "address", "input": "address", "expected": "London", "expected_route": "self_service"}
+{"id": "password", "input": "password", "expected": "Reset link", "expected_route": "self_service"}
+{"id": "refund", "input": "refund", "expected": "Refund approved", "expected_route": "human"}
+{"id": "account_dispute", "input": "account_dispute", "expected": "Account reviewed", "expected_route": "human"}
