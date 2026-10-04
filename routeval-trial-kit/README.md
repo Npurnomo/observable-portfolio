@@ -1,20 +1,22 @@
 # Routeval — first useful report
 
-This kit contains the verified 0.1.0 candidate, its MIT-licensed source,
-three runnable five-case examples, and a feedback form. The public PyPI
-0.0.1 release reserves the name; it does not contain this harness.
+This kit contains the published Routeval 0.1.0 package, its MIT-licensed
+source, three runnable five-case examples, and a feedback form. The included
+wheel and source archive match the files published on PyPI.
 
-## 1. Install the included package
+## 1. Install Routeval
 
 Python 3.10 or later is required. Unzip the kit and open a terminal in
 its `routeval-trial-kit` folder.
 
 ```sh
-python -m pip install routeval-0.1.0-py3-none-any.whl
+python -m pip install routeval==0.1.0
 routeval --version
 ```
 
 Expected version: 0.1.0. The package has no required dependencies.
+For installation without network access, use the included wheel instead:
+`python -m pip install routeval-0.1.0-py3-none-any.whl`.
 
 ## 2. Get a first report
 

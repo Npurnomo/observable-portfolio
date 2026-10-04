@@ -36,7 +36,7 @@ const usd = value => value === null ? "Unknown" : "$" + value.toFixed(4);
 ```
 
 <div class="rv-hero">
-  <span class="rv-kicker">Routeval · Python evaluation tool · 0.1.0 candidate</span>
+  <span class="rv-kicker">Routeval · Python evaluation tool · 0.1.0</span>
   <h1>What did your escalations buy?</h1>
   <p>Replay examples through your AI pipeline. Compare answer quality, routing decisions, and cost in one report — for a model cascade, a human handoff, or a rules-and-LLM flow.</p>
   <p class="rv-note">Python 3.10+ · no required package dependencies · three offline examples · no API key needed</p>
@@ -45,12 +45,13 @@ const usd = value => value === null ? "Unknown" : "$" + value.toFixed(4);
 ```js
 display(html`<div class="rv-actions">
   <a class="rv-download" href="${kitUrl}" download="routeval-trial-kit-0.1.0.zip">Download trial kit</a>
+  <a href="https://pypi.org/project/routeval/0.1.0/">View on PyPI</a>
   <a href="#try-it-with-five-cases">Run five cases</a>
   <a href="${sourceUrl}" download="routeval-0.1.0.tar.gz">Package source · MIT</a>
 </div>`);
 ```
 
-<div class="rv-status"><strong>Ready to try:</strong> the kit includes the locally verified 0.1.0 wheel and source archive. The public PyPI 0.0.1 release reserves the name and does not contain this harness. Install the included wheel for this trial.</div>
+<div class="rv-status"><strong>Published on PyPI:</strong> install Routeval 0.1.0 with <code>python -m pip install routeval==0.1.0</code>. A fresh public install, the offline demo, and all three bundled fixtures passed verification. The trial kit also includes the same verified wheel and source archive.</div>
 
 ## See what answer accuracy leaves out
 
@@ -101,12 +102,24 @@ const rows = chosen.cases.map(item => ({
 
 <p class="rv-note">These route labels express a reference policy. A mismatch does not prove an answer was accidental or that another path would have produced a better answer. The costs are illustrative; zero API spend excludes local compute and energy.</p>
 
+## Get your first report
+
+In a fresh folder, run:
+
+```sh
+python -m pip install routeval==0.1.0
+routeval init
+routeval run
+```
+
+The bundled demo needs no API key. Expect **20 attempts, 16 correct answers, one deliberately allowed failure, and $0.0613 synthetic total cost**. Failed attempts remain in the accuracy denominator.
+
 ## Try it with five cases
 
 Download and unzip the trial kit. Open a terminal in its <code>routeval-trial-kit</code> folder, then run:
 
 ```sh
-python -m pip install routeval-0.1.0-py3-none-any.whl
+python -m pip install routeval==0.1.0
 routeval --version
 routeval run --config examples/local-hosted-cascade/routeval.json
 ```

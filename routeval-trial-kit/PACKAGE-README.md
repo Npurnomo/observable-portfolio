@@ -11,16 +11,16 @@ The core uses only the Python standard library. Python 3.10+; MIT licensed.
 
 ## Release status
 
-The functional **0.1.0 release candidate** is implemented locally. PyPI's 0.0.1
-release reserves the name and does **not** contain this harness. Until 0.1.0 is
-published, install this checkout or the verified release wheel:
+**0.1.0 is published on [PyPI](https://pypi.org/project/routeval/0.1.0/).**
+Both published distributions match the verified local files. A fresh public
+installation, the offline demo, and all three five-case trial fixtures passed
+verification on October 4, 2026.
 
 ```sh
-python -m pip install .
-# Alternatively: python -m pip install dist/routeval-0.1.0-py3-none-any.whl
+python -m pip install routeval==0.1.0
 ```
 
-After publication, the package command will be `python -m pip install routeval==0.1.0`.
+For development, install this checkout with `python -m pip install .`.
 
 ## Try it without an API key
 
